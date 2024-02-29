@@ -1,4 +1,4 @@
-﻿namespace Dicitionary.ViewModels
+﻿namespace Dictionary.ViewModels
 {
     internal class BaseViewModel
     {
