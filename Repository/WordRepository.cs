@@ -8,9 +8,9 @@ namespace Dictionary.Repository
 {
     public class WordRepository : IWordRepository
     {
-        public List<Word> words;
+        public List<Word> words = new List<Word>();
 
-        private readonly static string path = "words.json";
+        private string path = @"D:\\Facultate\\Anul 2\\Semestrul 2\\MAP\\Dicitionary\\Repository\\words.json";
 
         public List<Word> GetWords() 
         {

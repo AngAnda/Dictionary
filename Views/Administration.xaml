@@ -35,17 +35,17 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="30 0" FontSize="30" VerticalAlignment="Center" Text="Name"></TextBox>
-        <TextBox Grid.Row="1" Grid.ColumnSpan="3" Margin="30,30,10,20"></TextBox>
-        <Button Grid.Row="2" Grid.Column="0" Margin="15 50" Content="Add" ></Button>
-        <Button Grid.Row="2" Grid.Column="1" Margin="15 50" Content="Update" ></Button>
-        <Button Grid.Row="2" Grid.Column="2" Margin="15 50" Content="Delete" ></Button>
-        <ComboBox HorizontalAlignment="Left" Margin="15 5" VerticalAlignment="Bottom" Width="170" IsEditable="True" Grid.Row="0" Grid.Column="1"/>
+        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="30 0" FontSize="30" VerticalAlignment="Center" Text="{Binding CurrentWord.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="3" Margin="30,30,10,20" Text="{Binding CurrentWord.Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button Grid.Row="2" Grid.Column="0" Margin="15 50" Content="Add" Command="{Binding AddWordCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Margin="15 50" Content="Update" Command="{Binding UpdateWordCommand}" ></Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="15 50" Content="Delete" Command="{Binding DeleteWordCommand}"></Button>
+        <ComboBox HorizontalAlignment="Left" Margin="15 5" VerticalAlignment="Bottom" Width="170" IsEditable="True" Grid.Row="0" Grid.Column="1" Text="{Binding CurrentWord.Category, UpdateSourceTrigger=PropertyChanged}"/>
         <Label  Grid.Row="0" Grid.Column="0" Content="Category" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0"></Label>
         <StackPanel Grid.Column="3" Grid.Row="1"/>
         <Image Grid.Row="0" Grid.Column="2"></Image>
 
 
-        <DataGrid Grid.Row="1" Grid.Column="4" ItemsSource="{Binding Words}"  AutoGenerateColumns="True"></DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="4" ItemsSource="{Binding Words}"  AutoGenerateColumns="True" ColumnWidth="*" Margin="20 5"></DataGrid>
     </Grid>
 </Page>
