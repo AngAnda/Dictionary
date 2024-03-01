@@ -13,9 +13,9 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <StaticResource ResourceKey="AdministrationViewModel"/>
+        <StaticResource ResourceKey="AdministrationViewModel" x:Name="AdministrationViewModel"/>
     </Page.DataContext>
-    
+
     <Page.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="LightBlue" Offset="0.0" />
@@ -24,7 +24,8 @@
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="160"></RowDefinition>
+            <RowDefinition Height="115"></RowDefinition>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -35,17 +36,24 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="30 0" FontSize="30" VerticalAlignment="Center" Text="{Binding CurrentWord.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <TextBox Grid.Row="1" Grid.ColumnSpan="3" Margin="30,30,10,20" Text="{Binding CurrentWord.Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Button Grid.Row="2" Grid.Column="0" Margin="15 50" Content="Add" Command="{Binding AddWordCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Margin="15 50" Content="Update" Command="{Binding UpdateWordCommand}" ></Button>
-        <Button Grid.Row="2" Grid.Column="2" Margin="15 50" Content="Delete" Command="{Binding DeleteWordCommand}"></Button>
-        <ComboBox HorizontalAlignment="Left" Margin="15 5" VerticalAlignment="Bottom" Width="170" IsEditable="True" Grid.Row="0" Grid.Column="1" Text="{Binding CurrentWord.Category, UpdateSourceTrigger=PropertyChanged}"/>
-        <Label  Grid.Row="0" Grid.Column="0" Content="Category" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0"></Label>
-        <StackPanel Grid.Column="3" Grid.Row="1"/>
-        <Image Grid.Row="0" Grid.Column="2"></Image>
+        <Label Grid.Row="2" Grid.Column="0" Content="Description:" Margin="30 0"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Content="Word name:" Margin="30 30"></Label>
+        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="30,59,30,0" FontSize="30" VerticalAlignment="Top" Text="{Binding CurrentWord.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Row="2" Grid.ColumnSpan="3" Margin="30,30,10,20" Text="{Binding CurrentWord.Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button Grid.Row="3" Grid.Column="0" Margin="15,50,15,50" Content="Add" Command="{Binding AddWordCommand}"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Margin="15,50,15,50" Content="Update" Command="{Binding UpdateWordCommand}" ></Button>
+        <Button Grid.Row="3" Grid.Column="2" Margin="15,50,16,50" Content="Delete" Command="{Binding DeleteWordCommand}"></Button>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="170" IsEditable="True" Grid.Row="1" Grid.Column="0" Margin="35 0 0 0" SelectedItem="{Binding CurrentWord.Category, Mode=TwoWay}" Text="{Binding CurrentWord.Category, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Categories}"/>
+        <Label  Grid.Row="1" Grid.Column="0" Content="Category: " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30 0"></Label>
+        <StackPanel Grid.Column="3" Grid.Row="2"/>
 
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="170" Grid.Row="1" Grid.Column="1" Margin="35 0 0 0" Content="Clear fields" Command="{Binding NewWordCommand}"></Button>
+        
+    <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="170" Grid.Row="1" Grid.Column="2" Margin="10 0" Content="Add Image" Command="{Binding NewWordCommand}"></Button>
 
-        <DataGrid Grid.Row="1" Grid.Column="4" ItemsSource="{Binding Words}"  AutoGenerateColumns="True" ColumnWidth="*" Margin="20 5"></DataGrid>
+        <Image Grid.Row="0" Grid.Column="2"  Margin="40 20" ></Image>
+
+        <Label Grid.Row="1" Grid.Column="3" Content="Words Table: " VerticalAlignment="Bottom" Margin="18 3"></Label>
+        <DataGrid Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Words}"  AutoGenerateColumns="True" ColumnWidth="*" Margin="20,5,20,5" CanUserAddRows="False" SelectedItem="{Binding CurrentWord, Mode=TwoWay}"></DataGrid>
     </Grid>
 </Page>

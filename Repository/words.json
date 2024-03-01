@@ -1,38 +1,26 @@
 [
   {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
+    "Name": "Koala",
+    "Category": "Animals",
+    "Description": "A very cute animal that lives in Australia and eats bamboo?",
+    "ImagePath": ""
   },
   {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
+    "Name": "Leopard",
+    "Category": "Animals",
+    "Description": "Fast animal from Africa",
+    "ImagePath": ""
   },
   {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
+    "Name": "Giraffe",
+    "Category": "Animals",
+    "Description": "A tall animal from Africa ",
+    "ImagePath": ""
   },
   {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
-  },
-  {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
-  },
-  {
-    "Name": "Produs1",
-    "Category": "2",
-    "Description": "Aceasta este descrierea produsului 1.",
-    "ImagePath": "imagini/produs1.png"
+    "Name": "Hello World",
+    "Category": "Animals",
+    "Description": "Hello",
+    "ImagePath": ""
   }
 ]

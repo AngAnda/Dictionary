@@ -1,5 +1,6 @@
 ﻿using Dicitionary.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Dictionary.Repository
 {
@@ -14,7 +15,7 @@ namespace Dictionary.Repository
         void DeleteWord(Word word);
 
         void UpdateWord(Word word);
+        ObservableCollection<string> GetCategories();
 
-        //void UpdateWord(List<Word> words);
     }
 }

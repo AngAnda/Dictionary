@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Collections.ObjectModel;
+using Dictionary.Exceptions;
 
 namespace Dictionary.Repository
 {
@@ -12,19 +15,35 @@ namespace Dictionary.Repository
 
         private string path = @"D:\\Facultate\\Anul 2\\Semestrul 2\\MAP\\Dicitionary\\Repository\\words.json";
 
-        public List<Word> GetWords() 
+        public WordRepository()
         {
-            if(!File.Exists(path))
+            words = GetWords() ?? new List<Word>();
+        }
+
+        public List<Word> GetWords()
+        {
+            if (!File.Exists(path))
             {
                 return new List<Word>();
             }
-
-            string json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<List<Word>>(json);
+            try
+            {
+                string json = File.ReadAllText(path);
+                var list =  JsonConvert.DeserializeObject<List<Word>>(json);
+                return (list != null) ? list : new List<Word>();
+            }
+            catch (Exception)
+            {
+                return new List<Word>();
+            }
         }
 
         public void AddWord(Word word)
         {
+            if (words.Any(w => w.Name == word.Name))
+            {
+                throw new WordExistsException("The word already exists in the dictionary.");
+            }
             words.Add(word);
             SaveWord(words);
         }
@@ -34,13 +53,14 @@ namespace Dictionary.Repository
             words.Remove(word);
             SaveWord(words);
         }
+
         public void UpdateWord(Word word)
         {
             int index = words.FindIndex(w => w.Name == word.Name);
             if (index != -1)
             {
                 words[index] = word;
-                SaveWord(words); 
+                SaveWord(words);
             }
         }
 
@@ -55,6 +75,14 @@ namespace Dictionary.Repository
             {
                 Console.WriteLine($"A apărut o eroare: {ex.Message}");
             }
+        }
+
+        public ObservableCollection<string> GetCategories()
+        {
+            if (words.Count == 0)
+                return new ObservableCollection<string>();
+            return new ObservableCollection<string>(
+                 words.DefaultIfEmpty().Select(w => w.Category).Distinct().ToList());
         }
     }
 }

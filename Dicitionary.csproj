@@ -56,6 +56,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,10 +75,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\WordExistsException.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Word.cs" />
     <Compile Include="Repository\IWordRepository.cs" />
     <Compile Include="Repository\WordRepository.cs" />
+    <Compile Include="Services\SaveImage.cs" />
     <Compile Include="ViewModels\AdministrationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
