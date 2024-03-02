@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Dictionary.Properties;
+using System.Collections.Generic;
 
 namespace Dicitionary.Models
 {
     public class Word
     {
+        public static readonly string DefaultImagePath = "./Resources/NoImage.jpg";
+
         public Word()
         {
             Name = string.Empty;
             Category = string.Empty;
             Description = string.Empty;
-            ImagePath = string.Empty;
+            ImagePath = DefaultImagePath;
         }
         public string Name { get; set; }
         public string Category { get; set; }
@@ -23,16 +26,6 @@ namespace Dicitionary.Models
                    Category == word.Category &&
                    Description == word.Description &&
                    ImagePath == word.ImagePath;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = -1379583215;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Category);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ImagePath);
-            return hashCode;
         }
     }
 }

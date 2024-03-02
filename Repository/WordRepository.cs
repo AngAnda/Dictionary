@@ -11,30 +11,30 @@ namespace Dictionary.Repository
 {
     public class WordRepository : IWordRepository
     {
-        public List<Word> words = new List<Word>();
+        public ObservableCollection<Word> words = new ObservableCollection<Word>();
 
         private string path = @"D:\\Facultate\\Anul 2\\Semestrul 2\\MAP\\Dicitionary\\Repository\\words.json";
 
         public WordRepository()
         {
-            words = GetWords() ?? new List<Word>();
+            words = GetWords() ?? new ObservableCollection<Word>();
         }
 
-        public List<Word> GetWords()
+        public ObservableCollection<Word> GetWords()
         {
             if (!File.Exists(path))
             {
-                return new List<Word>();
+                return new ObservableCollection<Word>();
             }
             try
             {
                 string json = File.ReadAllText(path);
-                var list =  JsonConvert.DeserializeObject<List<Word>>(json);
-                return (list != null) ? list : new List<Word>();
+                var list =  JsonConvert.DeserializeObject<ObservableCollection<Word>>(json);
+                return (list != null) ? list : new ObservableCollection<Word>();
             }
             catch (Exception)
             {
-                return new List<Word>();
+                return new ObservableCollection<Word>();
             }
         }
 
@@ -56,7 +56,7 @@ namespace Dictionary.Repository
 
         public void UpdateWord(Word word)
         {
-            int index = words.FindIndex(w => w.Name == word.Name);
+            int index = words.ToList().FindIndex(w => w.Name == word.Name);
             if (index != -1)
             {
                 words[index] = word;
@@ -64,7 +64,7 @@ namespace Dictionary.Repository
             }
         }
 
-        public void SaveWord(List<Word> word)
+        public void SaveWord(ObservableCollection<Word> word)
         {
             try
             {

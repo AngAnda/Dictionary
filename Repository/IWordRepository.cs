@@ -6,9 +6,9 @@ namespace Dictionary.Repository
 {
     public interface IWordRepository
     {
-        List<Word> GetWords();
+        ObservableCollection<Word> GetWords();
 
-        void SaveWord(List<Word> word);
+        void SaveWord(ObservableCollection<Word> word);
 
         void AddWord(Word word);
 

@@ -1,7 +1,6 @@
 ﻿using Dicitionary.Models;
 using Dictionary.Repository;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace Dicitionary.ViewModels
 {
     public class AdministrationViewModel : INotifyPropertyChanged
     {
-        private List<Word> _words;
+        private ObservableCollection<Word> _words;
 
         private Word _currentWord;
         public Word CurrentWord
@@ -45,7 +44,7 @@ namespace Dicitionary.ViewModels
         }
 
         private IWordRepository wordRepository;
-        public List<Word> Words
+        public ObservableCollection<Word> Words
         {
             get { return _words; }
             set
@@ -66,6 +65,7 @@ namespace Dicitionary.ViewModels
             UpdateWordCommand = new RelayCommand(UpdateWord, CanUpdateWord);
             NewWordCommand = new RelayCommand( _ => CurrentWord = new Word(), _ => true);
             AddImageCommad = new RelayCommand(AddImage, _ => true);
+            DeleteImageCommand = new RelayCommand(_ => { CurrentWord.ImagePath = Word.DefaultImagePath; CommandManager.InvalidateRequerySuggested(); }, _ => true);
             Categories = wordRepository.GetCategories();
             CurrentWord = new Word();
         }
@@ -118,12 +118,11 @@ namespace Dicitionary.ViewModels
             wordRepository.UpdateWord(CurrentWord);
             Words = wordRepository.GetWords();
             Categories = wordRepository.GetCategories();
-            CurrentWord = new Word();
         }
 
         private void AddImage(object parameter)
         {
-            FileManager.SaveImage();
+            CurrentWord.ImagePath = FileManager.SaveImage();
         }
 
         public ICommand AddWordCommand { get; }
@@ -131,5 +130,7 @@ namespace Dicitionary.ViewModels
         public ICommand UpdateWordCommand { get; }
         public ICommand NewWordCommand { get; }
         public ICommand AddImageCommad { get; }
+
+        public ICommand DeleteImageCommand { get; }
     }
 }
