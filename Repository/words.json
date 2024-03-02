@@ -14,7 +14,7 @@
   {
     "Name": "Giraffe",
     "Category": "Animals",
-    "Description": "A tall animal from Africa. Eats leaves.",
+    "Description": "A tall animal from Africa. Eats leaves. sdjsajd",
     "ImagePath": "./Resources/Giraffe.png"
   },
   {
@@ -32,7 +32,13 @@
   {
     "Name": "Student",
     "Category": "Education",
-    "Description": "Sleep deprived being.",
-    "ImagePath": "./Resources/NoImage.jpg"
+    "Description": "Sleep deprived being. Lepra a societatii.",
+    "ImagePath": "./Resources/sloth.jpg"
+  },
+  {
+    "Name": "Capybara",
+    "Category": "Animals",
+    "Description": "Cutest animal alive.",
+    "ImagePath": "./Resources/capybara.jpg"
   }
 ]

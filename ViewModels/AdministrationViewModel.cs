@@ -1,5 +1,6 @@
 ﻿using Dicitionary.Models;
 using Dictionary.Repository;
+using Dictionary.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace Dicitionary.ViewModels
 {
-    public class AdministrationViewModel : INotifyPropertyChanged
+    public class AdministrationViewModel : BaseViewModel
     {
         private ObservableCollection<Word> _words;
 
@@ -20,7 +21,7 @@ namespace Dicitionary.ViewModels
             set
             {
                 _currentWord = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentWord)));
+                NotifyPropertyChanged(nameof(CurrentWord));
                 
             }
         }
@@ -33,12 +34,12 @@ namespace Dicitionary.ViewModels
             set
             {
                 _categories = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Categories)));
+                NotifyPropertyChanged(nameof(Categories));
                 if (_currentWord != null && !_categories.Contains(_currentWord.Category))
                 {
                     _categories.Add(_currentWord.Category);
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Categories)));
+                    NotifyPropertyChanged(nameof(Categories));
                 }
             }
         }
@@ -50,11 +51,9 @@ namespace Dicitionary.ViewModels
             set
             {
                 _words = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Words)));
+                NotifyPropertyChanged(nameof(Words));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public AdministrationViewModel()
         {
@@ -118,6 +117,7 @@ namespace Dicitionary.ViewModels
             wordRepository.UpdateWord(CurrentWord);
             Words = wordRepository.GetWords();
             Categories = wordRepository.GetCategories();
+
         }
 
         private void AddImage(object parameter)
@@ -130,7 +130,6 @@ namespace Dicitionary.ViewModels
         public ICommand UpdateWordCommand { get; }
         public ICommand NewWordCommand { get; }
         public ICommand AddImageCommad { get; }
-
         public ICommand DeleteImageCommand { get; }
     }
 }

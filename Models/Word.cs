@@ -1,9 +1,11 @@
 ﻿using Dictionary.Properties;
+using Dictionary.ViewModels;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Dicitionary.Models
 {
-    public class Word
+    public class Word : BaseViewModel
     {
         public static readonly string DefaultImagePath = "./Resources/NoImage.jpg";
 
@@ -14,10 +16,55 @@ namespace Dicitionary.Models
             Description = string.Empty;
             ImagePath = DefaultImagePath;
         }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                NotifyPropertyChanged(nameof(Name));
+            }
+        }
+
+        private string _category;
+
+        public string Category
+        {
+            get { return _category; }
+            set
+            {
+                _category = value;
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
+                NotifyPropertyChanged(nameof(Category));
+            }
+        }
+
+        private string _description;
+
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                NotifyPropertyChanged(nameof(Description));
+            }
+        }
+
+        private string _imagePath;
+
+        public string ImagePath
+        {
+            get { return _imagePath; }
+            set
+            {
+                _imagePath = value;
+                NotifyPropertyChanged(nameof(ImagePath));
+            }
+        }
 
         public override bool Equals(object obj)
         {
