@@ -38,7 +38,6 @@ namespace Dicitionary.ViewModels
 
         private bool CanExecuteLogin(object parameter)
         {
-            // trebuie sa facem un authentification service
             return !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password);
         }
 

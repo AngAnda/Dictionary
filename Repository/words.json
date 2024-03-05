@@ -14,14 +14,14 @@
   {
     "Name": "Giraffe",
     "Category": "Animals",
-    "Description": "A tall animal from Africa. Eats leaves. sdjsajd",
+    "Description": "A tall animal from Africa. Eats leaves. ",
     "ImagePath": "./Resources/Giraffe.png"
   },
   {
     "Name": "Panda",
     "Category": "Animals",
     "Description": "Surely eats bamboo.",
-    "ImagePath": "./Resources/Panda.jpg"
+    "ImagePath": "./Resources/NoImage.jpg"
   },
   {
     "Name": "Kangoroo",
@@ -32,7 +32,7 @@
   {
     "Name": "Student",
     "Category": "Education",
-    "Description": "Sleep deprived being. Lepra a societatii.",
+    "Description": "Sleep deprived being. ",
     "ImagePath": "./Resources/sloth.jpg"
   },
   {
@@ -40,5 +40,17 @@
     "Category": "Animals",
     "Description": "Cutest animal alive.",
     "ImagePath": "./Resources/capybara.jpg"
+  },
+  {
+    "Name": "profesor",
+    "Category": "Teaching ",
+    "Description": "Teaches you stuff",
+    "ImagePath": "./Resources/NoImage.jpg"
+  },
+  {
+    "Name": "Panda Rosu",
+    "Category": "Animals",
+    "Description": "Panda roșu (Ailurus fulgens) este o rudă de dimensiunea unei pisici a ratonilor și a dihorilor. Deși se credea că este o rudă a ursului panda, prin analize moleculare s-a constatat că nu face parte din familia urșilor.Este cunoscut și sub numele de „ursul pisică”, „pisica vulpe”, „vulpea de foc” sau „ratonul de Himalaya”. Capul și corpul măsoară până la 66 cm lungime, iar coada poate avea 50 cm lungime. Blana sa pufoasă are o culoare roșcat-castanie, cu pete albe pe față și inele negre pe coadă.",
+    "ImagePath": "./Resources/redpanda.jpg"
   }
 ]

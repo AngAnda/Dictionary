@@ -5,6 +5,7 @@ namespace Dicitionary.Views
 {
     public partial class OpeningPage : Page
     {
+
         public OpeningPage()
         {
             InitializeComponent();
@@ -19,6 +20,11 @@ namespace Dicitionary.Views
         {
             ((MainWindow)Application.Current.MainWindow).MainNavigationFrame.Navigate(new UserPage());
 
+        }
+
+        private void GoToQuizPage(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainNavigationFrame.Navigate(new UserQuiz());
         }
     }
 }
