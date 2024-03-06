@@ -4,12 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dicitionary.Views"
-      xmlns:vm="clr-namespace:Dicitionary.ViewModels"
+      xmlns:vm="clr-namespace:Dictionary.ViewModels"
+      xmlns:converters="clr-namespace:Dictionary.Converters"
       mc:Ignorable="d" 
       d:Height="675" d:Width="1295"
       Title="UserQuiz">
 
-    
+    <Page.DataContext>
+        <vm:QuizPageViewModel/>
+    </Page.DataContext>
+
     <Page.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="LightBlue" Offset="0.0" />
@@ -17,6 +21,96 @@
         </LinearGradientBrush>
     </Page.Background>
 
+    <Page.Resources>
+        <converters:StringToImageConverter x:Key="StringToImageConverter"/>
+        <DataTemplate x:Key="TextBoxTemplate">
+            <TextBlock Text="{Binding CurrentWord.Description}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ImageTemplate">
+            <Image Source="{Binding CurrentWord.ImagePath, Converter={StaticResource StringToImageConverter}}" />
+        </DataTemplate>
+    </Page.Resources>
+        
     <Grid>
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" 
+               Grid.Row="1" 
+               Grid.ColumnSpan="2" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center">
+                <TextBlock Text="{Binding CurrentIndex, StringFormat={}{0} / 5}" />
+        </Label>
+
+        <ContentControl Content="{Binding}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="ContentTemplate" Value="{StaticResource TextBoxTemplate}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ShowDescription}" Value="True">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ImageTemplate}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
+
+        <Label Content="User Quiz" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               FontSize="36" 
+               FontWeight="Bold" 
+               Grid.Column="0"
+               Grid.ColumnSpan="4" 
+               Grid.Row="0"
+               />
+        <Button
+            Grid.Column="1"
+            Grid.Row="5"
+            Width="200"
+            HorizontalAlignment="Left"
+            Height="50"
+            Content="Previous"
+            Command="{Binding PreviousWordCommand}"
+            />
+
+        <Button
+            Grid.Column="2"
+            Grid.Row="5"
+            Width="200"
+            HorizontalAlignment="Right"
+            Height="50"
+            Content="{Binding RightButtonContent}"
+            Command="{Binding NextWordCommand}"
+            />
+        
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Height="20"
+            Width="Auto"
+            Text="Hello"
+            Padding="100 0"
+            />
+        
+        
+    </Grid>
 </Page>
