@@ -105,10 +105,9 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
-            Height="20"
-            Width="Auto"
-            Text="Hello"
-            Padding="100 0"
+            Height="30"
+            Width="200"
+            Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
             />
         
         
