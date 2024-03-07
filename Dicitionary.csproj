@@ -79,9 +79,11 @@
     <Compile Include="Exceptions\WordExistsException.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Word.cs" />
+    <Compile Include="Models\WordDto.cs" />
     <Compile Include="Repository\IWordRepository.cs" />
     <Compile Include="Repository\WordRepository.cs" />
     <Compile Include="Services\AuthentificationService.cs" />
+    <Compile Include="Services\RandomWordGenerator.cs" />
     <Compile Include="Services\SaveImage.cs" />
     <Compile Include="ViewModels\AdministrationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

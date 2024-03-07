@@ -1,7 +1,7 @@
-﻿
-using Dicitionary.Models;
-using Dicitionary.ViewModels;
+﻿using Dicitionary.ViewModels;
+using Dictionary.Models;
 using Dictionary.Repository;
+using Dictionary.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -10,12 +10,13 @@ namespace Dictionary.ViewModels
     public class QuizPageViewModel : BaseViewModel
     {
 
-        private readonly IWordRepository _wordRepository;
         static int numberOfWords = 5;
 
-        private ObservableCollection<Word> _words;
 
-        public ObservableCollection<Word> Words
+        private readonly RandomWordGenerator _randomWordGenerator;
+        private ObservableCollection<WordDto> _words;
+
+        public ObservableCollection<WordDto> Words
         {
             get => _words;
             set
@@ -25,16 +26,9 @@ namespace Dictionary.ViewModels
             }
         }
 
-        private bool _showDescription;
-
         public bool ShowDescription
         {
-            get => _showDescription;
-            set
-            {
-                _showDescription = value;
-                NotifyPropertyChanged(nameof(ShowDescription));
-            }
+            get { return Words[CurrentIndex].ShowDescription; }
         }
 
         private int _currentIndex;
@@ -44,34 +38,30 @@ namespace Dictionary.ViewModels
             get => _currentIndex;
             set
             {
-                if(CurrentIndex < Words.Count - 1)
-                {
-                    _currentIndex = value;
-                    NotifyPropertyChanged(nameof(CurrentIndex));
-                    NotifyPropertyChanged(nameof(CurrentWord));
-                }
-               
+                _currentIndex = value;
+                NotifyPropertyChanged(nameof(CurrentIndex));
+                NotifyPropertyChanged(nameof(CurrentWord));
+                NotifyPropertyChanged(nameof(ShowDescription));
             }
         }
 
-        public Word CurrentWord
+        public WordDto CurrentWord
         {
             get => Words[CurrentIndex];
-        }   
+        }
 
         public string RightButtonContent
         {
             get => (CurrentIndex == numberOfWords) ? "Finish" : "Next";
         }
-  
+
         public QuizPageViewModel()
         {
-            _wordRepository = new WordRepository();
-            Words = _wordRepository.GetWords();
+            _randomWordGenerator = new RandomWordGenerator(new WordRepository(), numberOfWords);
+            Words = _randomWordGenerator.GenerateRandomWords();
             CurrentIndex = 0;
-            ShowDescription = true;
 
-            NextWordCommand = new RelayCommand(_ => CurrentIndex++, _ => CurrentIndex < numberOfWords);   
+            NextWordCommand = new RelayCommand(_ => CurrentIndex++, _ => CurrentIndex < numberOfWords - 1);
             PreviousWordCommand = new RelayCommand(_ => CurrentIndex--, _ => CurrentIndex > 0);
         }
 

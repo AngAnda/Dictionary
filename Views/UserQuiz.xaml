@@ -23,7 +23,7 @@
 
     <Page.Resources>
         <converters:StringToImageConverter x:Key="StringToImageConverter"/>
-        <DataTemplate x:Key="TextBoxTemplate">
+        <DataTemplate x:Key="DescriptionTemplate">
             <TextBlock Text="{Binding CurrentWord.Description}" />
         </DataTemplate>
 
@@ -60,9 +60,9 @@
         <ContentControl Content="{Binding}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
-                    <Setter Property="ContentTemplate" Value="{StaticResource TextBoxTemplate}" />
+                    <Setter Property="ContentTemplate" Value="{StaticResource DescriptionTemplate}" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ShowDescription}" Value="True">
+                        <DataTrigger Binding="{Binding ShowDescription}" Value="False">
                             <Setter Property="ContentTemplate" Value="{StaticResource ImageTemplate}" />
                         </DataTrigger>
                     </Style.Triggers>

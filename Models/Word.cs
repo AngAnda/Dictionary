@@ -7,7 +7,7 @@ namespace Dicitionary.Models
 {
     public class Word : BaseViewModel
     {
-        public static readonly string DefaultImagePath = "./Resources/NoImage.jpg";
+        public static string DefaultImagePath = "./Resources/NoImage.jpg";
 
         public Word()
         {
@@ -17,6 +17,14 @@ namespace Dicitionary.Models
             ImagePath = DefaultImagePath;
         }
 
+        public Word(string name, string category, string description, string imagePath)
+        {
+            Name = name;
+            Category = category;
+            Description = description;
+            ImagePath = imagePath;
+        }
+
         private string _name;
         public string Name
         {
@@ -24,7 +32,6 @@ namespace Dicitionary.Models
             set
             {
                 _name = value;
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
                 NotifyPropertyChanged(nameof(Name));
             }
         }
@@ -37,7 +44,6 @@ namespace Dicitionary.Models
             set
             {
                 _category = value;
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
                 NotifyPropertyChanged(nameof(Category));
             }
         }
