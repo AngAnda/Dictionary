@@ -29,11 +29,37 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hello and welcome to dictionary" FontSize="25"></TextBlock>
-        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Width="200">
-            <Button Content="Login" Click="GoToLogin" Height="50" Margin="0 10"></Button>
-            <Button Content="User Mode" Click="GoToUserPage" Height="50" Margin="0 10"></Button>
-            <Button Content="Quiz" Height="50" Margin="0 10" Click="GoToQuizPage"></Button>
+        <TextBlock Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="Hello and welcome to dictionary"
+                   FontSize="25"/>
+        <StackPanel Grid.Column="1
+                    " Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="3"
+                    Width="200"
+                    >
+            <Button Content="Login"
+                    Click="GoToLogin"
+                    Height="50"
+                    Margin="0 10"
+                    Style="{DynamicResource CustomButtonStyle}"
+                    />
+            <Button Content="User Mode"
+                    Click="GoToUserPage"
+                    Height="50"
+                    Margin="0 10"
+                     Style="{DynamicResource CustomButtonStyle}"
+                    />
+            <Button Content="Quiz"
+                    Height="50"
+                    Margin="0 10"
+                    Click="GoToQuizPage"
+                     Style="{DynamicResource CustomButtonStyle}"
+                    />
         </StackPanel>
     
     </Grid>

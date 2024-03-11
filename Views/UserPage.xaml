@@ -85,6 +85,7 @@
             HorizontalAlignment="Left" 
             Width="250"  
             ItemsSource="{Binding Categories}"
+            Style="{StaticResource CustomComboBoxStyle}" 
             SelectedValue="{Binding Category, Mode=TwoWay}"
            />
 
@@ -119,8 +120,7 @@
                Grid.Column="2"
                Width="120"
                Height="120"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Center"
+
                Source="{Binding CurrentWord.ImagePath, Converter={StaticResource StringToImageConverter}}"
                />
 

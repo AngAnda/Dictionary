@@ -24,14 +24,20 @@
     <Page.Resources>
         <converters:StringToImageConverter x:Key="StringToImageConverter"/>
         <DataTemplate x:Key="DescriptionTemplate">
-            <TextBlock Text="{Binding CurrentWord.Description}" />
+            <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="5">
+                <TextBlock 
+                TextAlignment="Center"
+                Text="{Binding CurrentWord.Description}"
+                FontSize="20"
+                />
+            </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="ImageTemplate">
             <Image Source="{Binding CurrentWord.ImagePath, Converter={StaticResource StringToImageConverter}}" />
         </DataTemplate>
     </Page.Resources>
-        
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -53,14 +59,25 @@
                Grid.Row="1" 
                Grid.ColumnSpan="2" 
                VerticalAlignment="Center" 
-               HorizontalAlignment="Center">
-                <TextBlock Text="{Binding CurrentIndex, StringFormat={}{0} / 5}" />
+               HorizontalAlignment="Center"
+               FontWeight="DemiBold"
+               FontSize="20"
+               BorderBrush="Black"
+               BorderThickness="1"
+               >
+            <TextBlock Text="{Binding CurrentIndex, StringFormat={}{0} / 5}" />
         </Label>
 
-        <ContentControl Content="{Binding}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
+        <ContentControl Content="{Binding}"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Grid.RowSpan="2">
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Setter Property="ContentTemplate" Value="{StaticResource DescriptionTemplate}" />
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="2"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ShowDescription}" Value="False">
                             <Setter Property="ContentTemplate" Value="{StaticResource ImageTemplate}" />
@@ -87,6 +104,7 @@
             HorizontalAlignment="Left"
             Height="50"
             Content="Previous"
+            Style="{StaticResource CustomButtonStyle}"
             Command="{Binding PreviousWordCommand}"
             />
 
@@ -96,20 +114,23 @@
             Width="200"
             HorizontalAlignment="Right"
             Height="50"
+            Style="{StaticResource CustomButtonStyle}"
             Content="{Binding RightButtonContent}"
             Command="{Binding NextWordCommand}"
             />
-        
+
         <TextBox
             Grid.Row="4"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
+            TextAlignment="Center"
+            VerticalContentAlignment="Center"
             Height="30"
             Width="200"
             Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
             />
-        
-        
+
+
     </Grid>
 </Page>

@@ -4,6 +4,7 @@ using Dictionary.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Dicitionary.ViewModels
 {
@@ -47,7 +48,9 @@ namespace Dicitionary.ViewModels
             get
             {
                 return SearchText == null ?
-                    _filteredWords :
+                    _filteredWords
+                    .Where(w => (string.IsNullOrEmpty(Category) || w.Category == Category))
+                    .ToList():
                     _filteredWords
                     .Where(w => w.Name.StartsWith(SearchText) &&
                     (string.IsNullOrEmpty(Category) || w.Category == Category))

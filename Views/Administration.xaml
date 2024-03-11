@@ -66,16 +66,19 @@
                 Grid.Column="0" 
                 Margin="15,50,15,50" 
                 Content="Add" 
+                Style="{StaticResource CustomButtonStyle}"
                 Command="{Binding AddWordCommand}"/>
         <Button Grid.Row="3" 
                 Grid.Column="1" 
                 Margin="15,50,15,50" 
                 Content="Update"
+                Style="{StaticResource CustomButtonStyle}"
                 Command="{Binding UpdateWordCommand}"/>
         <Button Grid.Row="3" 
                 Grid.Column="2" 
                 Margin="15,50,16,50" 
                 Content="Delete" 
+                Style="{StaticResource CustomButtonStyle}"
                 Command="{Binding DeleteWordCommand}"/>
         <ComboBox Padding="10 0" 
                   HorizontalAlignment="Left" 
@@ -96,14 +99,57 @@
                Margin="30 0"/>
         <StackPanel Grid.Column="3" Grid.Row="2"/>
 
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="170" Grid.Row="1" Grid.Column="1" Margin="35 0 0 0" Content="Clear fields" Command="{Binding NewWordCommand}"></Button>
+        <Button HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="170"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="35 0 0 0"
+                Content="Clear fields"
+                Style="{StaticResource CustomButtonStyle}"
+                Command="{Binding NewWordCommand}"/>
 
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="170" Grid.Row="1" Grid.Column="2" Margin="10 0" Content="Add Image" Command="{Binding AddImageCommad, UpdateSourceTrigger=PropertyChanged}"></Button>
+        <Button HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="170"
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="10 0"
+                Content="Add Image"
+                Style="{StaticResource CustomButtonStyle}"
+                Command="{Binding AddImageCommad, UpdateSourceTrigger=PropertyChanged}"></Button>
 
-        <Image Grid.Row="0" Grid.Column="2" Margin=" 0 10 0 0"  Source="{Binding CurrentWord.ImagePath, Converter={StaticResource ImageConverter}, UpdateSourceTrigger=PropertyChanged}"></Image>
+        <Image Grid.Row="0"
+               Grid.Column="2"
+               Margin=" 0 10 0 0"
+               Source="{Binding CurrentWord.ImagePath, Converter={StaticResource ImageConverter}, UpdateSourceTrigger=PropertyChanged}"></Image>
 
-        <Label Grid.Row="1" Grid.Column="3" Content="Words Table: " VerticalAlignment="Bottom" Margin="18 3"></Label>
-        <DataGrid Grid.Row="2" Grid.Column="3"  ItemsSource="{Binding Words}"  AutoGenerateColumns="True" ColumnWidth="*" Margin="20,5,20,5" CanUserAddRows="False" IsReadOnly="True" SelectedItem="{Binding CurrentWord, Mode=TwoWay}"/>
-        <Button Grid.Column="2" Grid.Row="0" Margin="0 10 0 0" Padding="5 0" Content="X" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Background="White" Foreground="Red" Command="{Binding DeleteImageCommand}"></Button>
+        <Label Grid.Row="1"
+               Grid.Column="3"
+               Content="Words Table: "
+               VerticalAlignment="Bottom"
+               Margin="18 3"/>
+        
+        <DataGrid Grid.Row="2"
+                  Grid.Column="3"
+                  ItemsSource="{Binding Words}"
+                  AutoGenerateColumns="True"
+                  ColumnWidth="*" 
+                  Margin="20,5,20,5"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding CurrentWord, Mode=TwoWay}"/>
+        <Button Grid.Column="2"
+                Grid.Row="0"
+                Margin="0 10 0 0"
+                Padding="5 0"
+                Content="X"
+                FontSize="15"
+                FontWeight="Bold" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"
+                Background="White" 
+                Foreground="Red"
+                Command="{Binding DeleteImageCommand}"/>
     </Grid>
 </Page>

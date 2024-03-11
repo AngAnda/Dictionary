@@ -30,7 +30,14 @@
             <TextBox Width="150" Margin="0 5 0 010" Background="White"  Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <Label FontSize="18">Password:</Label>
             <TextBox Width="150" Margin="0 5 0 10" Background="White" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Content="Login" Width="100" Margin="10" Background="LightBlue" BorderBrush="Transparent" Command="{Binding LoginCommand}"></Button>
+            <Button Content="Login"
+                    Width="100"
+                    Height="40"
+                    Margin="20"
+                    Background="LightBlue"
+                    BorderBrush="Transparent"
+                    Style="{StaticResource CustomButtonStyle}"
+                    Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 </Page>
