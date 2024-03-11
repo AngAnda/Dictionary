@@ -85,7 +85,6 @@
             HorizontalAlignment="Left" 
             Width="250"  
             ItemsSource="{Binding Categories}"
-            Style="{StaticResource CustomComboBoxStyle}" 
             SelectedValue="{Binding Category, Mode=TwoWay}"
            />
 

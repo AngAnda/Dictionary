@@ -92,13 +92,13 @@ namespace Dictionary.ViewModels
             if (CurrentIndex < numberOfWords - 1)
             {
                 CurrentIndex++;
+                UpdateProperties();
             }
             else
             {
                 ShowScore();
                 InitializeQuiz();
             }
-
         }
 
         private void ShowScore()
@@ -119,6 +119,7 @@ namespace Dictionary.ViewModels
 
         private void UpdateProperties()
         {
+            NotifyPropertyChanged(nameof(CurrentIndex));
             NotifyPropertyChanged(nameof(CurrentWord));
             NotifyPropertyChanged(nameof(ShowDescription));
             NotifyPropertyChanged(nameof(UserInput));
