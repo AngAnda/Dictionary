@@ -10,7 +10,7 @@ public static class FileManager
         try
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Fișiere imagine|*.jpg;*.jpeg;*.png;*.bmp|Toate fișierele|*.*";
+            openFileDialog.Filter = "Images|*.jpg;*.jpeg;*.png;*.bmp|All files|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFilePath = openFileDialog.FileName; 
@@ -33,7 +33,7 @@ public static class FileManager
 
                 File.Copy(sourceFilePath, destinationFilePath, true);
 
-                MessageBox.Show($"Imaginea a fost salvată cu succes în {destinationFilePath}!", "Salvare cu succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"The image has been saved in {destinationFilePath}!", "Succesful saving", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 string relativeUriPath = $"./Resources/{fileName}";
                 return relativeUriPath;
@@ -42,7 +42,7 @@ public static class FileManager
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"A apărut o eroare la salvarea imaginii: {ex.Message}", "Eroare la salvare", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"An error has been encounterd: {ex.Message}", "Saving Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         return null;
     }

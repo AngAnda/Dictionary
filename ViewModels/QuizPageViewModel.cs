@@ -21,7 +21,7 @@ namespace Dictionary.ViewModels
 
 
         private List<string> _userInputList;
-        private string _currentUserInput;
+        //private string _currentUserInput;
 
         public string UserInput
         {

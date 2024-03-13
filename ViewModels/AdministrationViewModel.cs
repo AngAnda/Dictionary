@@ -11,7 +11,20 @@ namespace Dicitionary.ViewModels
 {
     public class AdministrationViewModel : BaseViewModel
     {
+
         private ObservableCollection<Word> _words;
+
+        private int _selectedIndex;
+
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                _selectedIndex = value;
+                NotifyPropertyChanged(nameof(_selectedIndex));
+            }
+        }
 
         private Word _currentWord;
         public Word CurrentWord
@@ -21,7 +34,7 @@ namespace Dicitionary.ViewModels
             {
                 _currentWord = value;
                 NotifyPropertyChanged(nameof(CurrentWord));
-                
+
             }
         }
 
@@ -61,7 +74,7 @@ namespace Dicitionary.ViewModels
             AddWordCommand = new RelayCommand(AddWord, CanAddWord);
             DeleteWordCommand = new RelayCommand(DeleteWord, CanDeleteWord);
             UpdateWordCommand = new RelayCommand(UpdateWord, CanUpdateWord);
-            NewWordCommand = new RelayCommand( _ => CurrentWord = new Word(), _ => true);
+            NewWordCommand = new RelayCommand(_ => CurrentWord = new Word(), _ => true);
             AddImageCommad = new RelayCommand(AddImage, _ => true);
             DeleteImageCommand = new RelayCommand(_ => { CurrentWord.ImagePath = Word.DefaultImagePath; CommandManager.InvalidateRequerySuggested(); }, _ => true);
             Categories = wordRepository.GetCategories();
@@ -70,21 +83,21 @@ namespace Dicitionary.ViewModels
 
         private bool CanAddWord(object parameter)
         {
-            return !string.IsNullOrWhiteSpace(CurrentWord?.Name) 
-                && !string.IsNullOrWhiteSpace(CurrentWord?.Description) 
+            return !string.IsNullOrWhiteSpace(CurrentWord?.Name)
+                && !string.IsNullOrWhiteSpace(CurrentWord?.Description)
                 && !string.IsNullOrWhiteSpace(CurrentWord?.Category)
                 && !Words.Any(c => c.Name == CurrentWord.Name);
         }
 
         private bool CanDeleteWord(object parameter)
         {
-            return CurrentWord != null 
+            return CurrentWord != null
                 && Words.Contains(CurrentWord);
         }
 
         private bool CanUpdateWord(object parameter)
         {
-            return CurrentWord != null 
+            return CurrentWord != null && !Words.Contains(CurrentWord)
                 && Words.Contains(CurrentWord);
         }
 
@@ -104,19 +117,18 @@ namespace Dicitionary.ViewModels
                 Words = wordRepository.GetWords();
                 Categories = wordRepository.GetCategories();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Add Word Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Add Word Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             CurrentWord = new Word();
         }
 
         private void UpdateWord(object parameter)
         {
-            wordRepository.UpdateWord(CurrentWord);
+            wordRepository.UpdateWord(CurrentWord, SelectedIndex);
             Words = wordRepository.GetWords();
             Categories = wordRepository.GetCategories();
-
         }
 
         private void AddImage(object parameter)

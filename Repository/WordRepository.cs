@@ -1,10 +1,11 @@
 ﻿using Dicitionary.Models;
-using System;
-using System.IO;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Collections.ObjectModel;
 using Dictionary.Exceptions;
+using Newtonsoft.Json;
+using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Windows;
 
 namespace Dictionary.Repository
 {
@@ -12,7 +13,8 @@ namespace Dictionary.Repository
     {
         public ObservableCollection<Word> words = new ObservableCollection<Word>();
 
-        private string path = @"D:\\Facultate\\Anul 2\\Semestrul 2\\MAP\\Dicitionary\\Repository\\words.json";
+        private string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources") + "/words.json";
+        //private static string relativePath = ConfigurationManager.AppSettings["FilePath"];
 
         public WordRepository()
         {
@@ -23,12 +25,13 @@ namespace Dictionary.Repository
         {
             if (!File.Exists(path))
             {
-                return new ObservableCollection<Word>();
+                MessageBox.Show("The file does not exist.");
+                File.WriteAllText(path, "[]");
             }
             try
             {
                 string json = File.ReadAllText(path);
-                var list =  JsonConvert.DeserializeObject<ObservableCollection<Word>>(json);
+                var list = JsonConvert.DeserializeObject<ObservableCollection<Word>>(json);
                 return (list != null) ? list : new ObservableCollection<Word>();
             }
             catch (Exception)
@@ -53,14 +56,10 @@ namespace Dictionary.Repository
             SaveWord(words);
         }
 
-        public void UpdateWord(Word word)
+        public void UpdateWord(Word word, int index)
         {
-            int index = words.ToList().FindIndex(w => w.Name == word.Name);
-            if (index != -1)
-            {
-                words[index] = word;
-                SaveWord(words);
-            }
+            words[index] = word;
+            SaveWord(words);
         }
 
         public void SaveWord(ObservableCollection<Word> word)
