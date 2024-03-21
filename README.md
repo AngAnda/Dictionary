@@ -21,11 +21,11 @@ The Administration module is intended exclusively for administrators. It provide
 
 ### 2. Viewing
 
-The Viewing module is accessible to all users. It allows users to browse through the dictionary and explore the words, their meanings, synonyms, and example sentences.
+The Viewing module is accessible to all users. It allows users to browse through the dictionary and explore the words, their meanings and a representative image for the word.
 
 **Features:**
 - Browse words in alphabetical order or through a search function.
-- View detailed information about each word including its definition, synonyms, and usage examples.
+- View detailed information about each word including its definition, category or associated image.
 
 ![image](https://github.com/AngAnda/Dictionary/assets/61116472/17d9fea1-ac82-46e5-a779-bc39829ab736)
 
@@ -38,7 +38,7 @@ The Entertainment or Quiz module provides a fun way to learn new vocabulary. The
 - Interactive quiz format to test knowledge and retention.
 - Hints provided through descriptions or images to aid in guessing the words.
 - Score tracking to motivate users and track progress over time.
-- 
+
 ![image](https://github.com/AngAnda/Dictionary/assets/61116472/341c4c26-7547-4d3c-b793-646ae43f5413)
 ![image](https://github.com/AngAnda/Dictionary/assets/61116472/7601ff31-53dc-468f-9839-dc2f3ffb4f97)
 
