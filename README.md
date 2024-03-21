@@ -1,75 +1,62 @@
-# Dictionary Application Documentation
+# Dictionary Application
 
 ## Overview
 
-The Dictionary Application is developed using C# and Windows Presentation Foundation (WPF), designed to provide a comprehensive solution for managing a dictionary database. It allows users to search for words, add new entries, edit existing ones, and participate in quizzes to test their knowledge.
+The Dictionary application is designed as an educational tool to enhance vocabulary through interactive learning. The application is built using Windows Presentation Foundation (WPF) following the Model-View-ViewModel (MVVM) architectural pattern to ensure a clear separation of concerns and improve maintainability. It provides users with a unique learning experience through its distinct modules: Administration, Viewing, and Entertainment (Quiz).
 
-## Features
+## Modules
 
-### Main Interface
+### 1. Administration
 
-The main interface welcomes users with a greeting and offers three main functionalities:
+The Administration module is intended exclusively for administrators. It provides CRUD (Create, Read, Update, Delete) operations for managing the words in the dictionary. This feature allows the administrator to maintain the content and ensure it remains relevant and up-to-date.
 
-- **Login:** Authenticates users, unlocking additional features.
-- **Administration Mode:** Permits authenticated users to manage dictionary entries.
-- **Quiz:** Tests the user's knowledge through a quiz interface.
+**Features:**
+- Add new words with their definitions, synonyms, and examples.
+- Edit existing words to update their definitions, synonyms, and examples.
+- Delete words that are no longer relevant or correct.
+- View a list of all words for easy management and review.
 
-### Administration Mode Interface
-In the User Mode, users can perform the following actions:
-- **Add New Words:** Users can contribute new words to the dictionary along with their descriptions and categories.
-- **Edit Words:** Allows for the modification of existing dictionary entries.
-- **Delete Words:** Enables users to remove entries from the dictionary.
-
-  
-![image](https://github.com/AngAnda/Dictionary/assets/61116472/e8a58da2-a1ff-4df5-b08c-85b099c7cd8d)
+![image](https://github.com/AngAnda/Dictionary/assets/61116472/99b12a4e-1256-46eb-b889-2814239e9d83)
 
 
-### Dictionary Lookup Interface
+### 2. Viewing
 
-This interface simplifies the process of finding words in the dictionary by displaying:
+The Viewing module is accessible to all users. It allows users to browse through the dictionary and explore the words, their meanings, synonyms, and example sentences.
 
-- A dropdown menu for word selection.
-- The selected word's description and category.
-- An associated image, if available.
+**Features:**
+- Browse words in alphabetical order or through a search function.
+- View detailed information about each word including its definition, synonyms, and usage examples.
 
-### Quiz  Mode
-Users can check their vocabulary by playing a funny game where they are given prompts and have to guess the word.
-- **Question Progress Indicator:** The application displays the current question number and the total number of questions in the quiz (e.g., 3 / 5), letting users know their progress.
-- **Question Display Area:** The application uniquely displays each question either as a descriptive text or an image, chosen randomly. 
-- **Answer Submission Field:** Users can type their answers into a text input field. This field supports text-based answers, allowing for a wide range of question types.
-- **Navigation Buttons:**
-  - **Previous:** Allows users to go back to the previous question. This feature is essential for users who wish to change their answers to earlier questions.
-  - **Next:** Users can move forward to the next question. This button also serves to submit the current answer before proceeding.
-<figcaption>Description as prompt sample</figcaption>
-![Description as prompt sample](https://github.com/AngAnda/Dictionary/assets/61116472/83f4eb8f-d8d0-4f3d-81b5-aa0085b4ed03)
-
-<figcaption>Image as prompt</figcaption>
-![Image as prompt](https://github.com/AngAnda/Dictionary/assets/61116472/ce476cca-bdde-4e94-9f74-9e84141a58a1)
+![image](https://github.com/AngAnda/Dictionary/assets/61116472/17d9fea1-ac82-46e5-a779-bc39829ab736)
 
 
-## Usage
+### 3. Entertainment (Quiz)
 
-### Adding or Editing Words
+The Entertainment or Quiz module provides a fun way to learn new vocabulary. The application selects five words at random, and the user must guess the word based on its description or an image.
 
-When adding or editing dictionary entries, the application provides fields for:
-
-- **Word Name:** The term to be added or edited.
-- **Category:** Allows categorization of the word from a predefined list.
-- **Description:** A detailed explanation of the word.
-- **Image:** An option to attach a relevant picture.
+**Features:**
+- Interactive quiz format to test knowledge and retention.
+- Hints provided through descriptions or images to aid in guessing the words.
+- Score tracking to motivate users and track progress over time.
+- 
+![image](https://github.com/AngAnda/Dictionary/assets/61116472/341c4c26-7547-4d3c-b793-646ae43f5413)
+![image](https://github.com/AngAnda/Dictionary/assets/61116472/7601ff31-53dc-468f-9839-dc2f3ffb4f97)
 
 ## Technical Details
 
-Developed in C# and utilizing WPF for the UI, the application follows the MVVM pattern. This approach ensures a clean separation between logic and presentation, facilitating maintenance and scalability.
+The application leverages the Windows Presentation Foundation (WPF) framework, employing the Model-View-ViewModel (MVVM) pattern for a clean separation of the UI from the business logic. Persistence is handled through JSON serialization, allowing for easy data storage and retrieval.
 
-### Data Management
+**Key Technologies:**
+- **WPF:** Provides a robust framework for building rich desktop applications.
+- **MVVM:** Enhances testability and maintainability by separating the application's logic from its presentation.
+- **JSON Serialization:** Ensures easy and efficient data storage and management.
+- **Repository Pattern:** Provides a mechanism to read data from the JSON file
 
-Dictionary entries are stored and managed through a backend database or file system, encompassing word names, categories, descriptions, and image paths.
+## Getting Started
 
-### User Authentication
+To get started with the Dictionary application, follow these steps:
 
-The application includes a user authentication system, distinguishing between regular users and administrators to provide appropriate access levels.
-
-## Conclusion
-
-The Dictionary Application is a versatile tool for anyone interested in language learning and dictionary management. It combines intuitive design with comprehensive functionality, making it a valuable asset for educators, students, and language enthusiasts.
+1. Clone the repository to your local machine.
+2. Open the solution in Visual Studio.
+3. Build the solution to resolve any dependencies.
+4. Run the application to start exploring and learning new words.
